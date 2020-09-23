@@ -50,7 +50,7 @@ namespace Folder_Removal_Tool
             }
             catch (System.IO.IOException e)
             {
-                Console.WriteLine(e.Message);
+                System.Windows.Forms.MessageBox.Show(e.Message);
             }
         }
 
