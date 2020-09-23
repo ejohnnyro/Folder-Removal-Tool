@@ -17,6 +17,8 @@ namespace Folder_Removal_Tool
         public MainFRT()
         {
             InitializeComponent();
+            listBox1.MouseDoubleClick += new MouseEventHandler(listBox1_DoubleClick);
+
         }
 
         public void addItemToListBox(string item)
@@ -41,16 +43,20 @@ namespace Folder_Removal_Tool
 
         public void deleteAll()
         {
-            string pathToDelete = listBox1.SelectedItem.ToString();
-            System.IO.DirectoryInfo di = new System.IO.DirectoryInfo(pathToDelete);
-            // Delete this dir and all subdirs.
-            try
+            foreach (string folderPath in listBox1.Items)
             {
-                di.Delete(true);
-            }
-            catch (System.IO.IOException e)
-            {
+                MessageBox.Show(folderPath);
+                // string i = listBox1.Items[0] as string;
+                System.IO.DirectoryInfo di = new System.IO.DirectoryInfo(folderPath);
+                // Delete this dir and all subdirs.
+                try
+                {
+                    di.Delete(true);
+                }
+                catch (System.IO.IOException e)
+                {
                 System.Windows.Forms.MessageBox.Show(e.Message);
+                }
             }
         }
 
@@ -86,5 +92,18 @@ namespace Folder_Removal_Tool
         {
             deleteAll();
         }
+
+        public void listBox1_DoubleClick(object sender, MouseEventArgs e)
+        {
+            int index = this.listBox1.IndexFromPoint(e.Location);
+            if (index != System.Windows.Forms.ListBox.NoMatches)
+            {
+                MessageBox.Show(listBox1.SelectedItem.ToString());
+                string folderToOpen = listBox1.SelectedItem.ToString();
+                System.Diagnostics.Process.Start(Environment.GetEnvironmentVariable("WINDIR") + @"\explorer.exe", folderToOpen);
+            }
+        }
+
+
     }
 }
