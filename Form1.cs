@@ -43,21 +43,29 @@ namespace Folder_Removal_Tool
 
         public void deleteAll()
         {
+
             foreach (string folderPath in listBox1.Items)
             {
-                MessageBox.Show(folderPath);
-                // string i = listBox1.Items[0] as string;
-                System.IO.DirectoryInfo di = new System.IO.DirectoryInfo(folderPath);
+                // MessageBox.Show(folderPath);
+                // Create a new DirectoryInfo object.
+               // string i = listBox1.Items[0] as string;
                 // Delete this dir and all subdirs.
                 try
                 {
+                    System.IO.DirectoryInfo di = new DirectoryInfo(folderPath);
                     di.Delete(true);
+
                 }
                 catch (System.IO.IOException e)
                 {
-                System.Windows.Forms.MessageBox.Show(e.Message);
+                    System.Windows.Forms.MessageBox.Show(e.Message);
                 }
+
             }
+
+            listBox1.Items.Clear();
+
+
         }
 
 
