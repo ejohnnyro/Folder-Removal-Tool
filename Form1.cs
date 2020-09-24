@@ -106,7 +106,7 @@ namespace Folder_Removal_Tool
             int index = this.listBox1.IndexFromPoint(e.Location);
             if (index != System.Windows.Forms.ListBox.NoMatches)
             {
-                MessageBox.Show(listBox1.SelectedItem.ToString());
+               // MessageBox.Show(listBox1.SelectedItem.ToString());
                 string folderToOpen = listBox1.SelectedItem.ToString();
                 System.Diagnostics.Process.Start(Environment.GetEnvironmentVariable("WINDIR") + @"\explorer.exe", folderToOpen);
             }
