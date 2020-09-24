@@ -11,6 +11,7 @@
     <PackageIcon>web_hi_res_512.png</PackageIcon>
     <PackageProjectUrl>https://github.com/ejohnnyro/Folder-Removal-Tool</PackageProjectUrl>
     <RepositoryUrl>https://github.com/ejohnnyro/Folder-Removal-Tool</RepositoryUrl>
+    <PackageId>FolderRemovalTool</PackageId>
   </PropertyGroup>
 
   <ItemGroup>
